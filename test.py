@@ -20,5 +20,5 @@ entrada = {"V": 1090,
             "GF_GRO": 0.05,
             "CV_ef": 0.03,
             "CD_ef": 0.05}
-data = re.post('http://localhost:3000/api/stats', data=entrada)
+data = re.post('http://localhost:3000/api/stats', json=entrada)
 print(data.text)

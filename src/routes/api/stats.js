@@ -127,16 +127,16 @@ router.post('api.calculate', '/', async (ctx) => {
   responseData.FB5 = MC - CF - CD - IN;
   responseData.FB6 = MC - CF - CD - IN - GF + (0.5 * responseData.GRO_AH);
 
-  responseData.M1_6_P = (CVT * (1 + (0.5 * GRO)) * (1 - (0.5 * CV_ef)) + CF + CD + GF + (0.5 * (responseData.NW_GF - responseData.AH_CF))) / (V * (1 - V_p * V_in) * (1 + 0.5*GRO)) - 1;
-  responseData.M1_6_CV = (V * (1 + 0.5*GRO) * (1 - 0.5*CV_ef) - CF - CD - GF - 0.5*(responseData.NW_GF - responseData.AH_CF)) / (CVT * (1 + 0.5*GRO) * (1 - 0.5*CV_ef)) - 1;
-  responseData.M1_6_Q = (CF + CD + GF + 0.5*(responseData.NW_GF - responseData.AH_CF)) / ((1 + 0.5*GRO) * ((V * (1 - V_p * V_in) - CVT * (1 - 0.5*CV_ef)))) - 1;
-  responseData.M1_6_CF = ((1+0.5*GRO)*((V*(1-V_p*V_in)-CVT*(1-0.5*CV_ef))-CD-GF-0.5*responseData.NW_GF)/(CF-0.5*responseData.AH_CF)) - 1;
+  responseData.M1_6_P = (CVT * (1 + (0.5 * GRO)) * (1 - (0.5 * CV_ef)) + CF + CD + GF + (0.5 * (responseData.NW_GF - responseData.AH_CD))) / (V * (1 - V_p * V_in) * (1 + 0.5*GRO)) - 1;
+  responseData.M1_6_CV = (V * (1 + 0.5*GRO) * (1 - 0.5*CV_ef) - CF - CD - GF - 0.5*(responseData.NW_GF - responseData.AH_CD)) / (CVT * (1 + 0.5*GRO) * (1 - 0.5*CV_ef)) - 1;
+  responseData.M1_6_Q = (CF + CD + GF + 0.5*(responseData.NW_GF - responseData.AH_CD)) / ((1 + 0.5*GRO) * ((V * (1 - V_p * V_in) - CVT * (1 - 0.5*CV_ef)))) - 1;
+  responseData.M1_6_CF = ((1+0.5*GRO)*((V*(1-V_p*V_in)-CVT*(1-0.5*CV_ef))-CD-GF-0.5*responseData.NW_GF)/(CF-0.5*responseData.AH_CD)) - 1;
 
-  responseData.M2_6_P = VAR * ((1 + 0.5*GRO) * (V * (1 - V_p * V_in) - CVT * (1 - 0.5*CV_ef)) - CF - CD - GF - 0.5*(responseData.NW_GF - responseData.AH_CF)) / (V * (1 - V_p*V_in) * (1 +0.5*GRO));
-  responseData.M2_6_CV = -VAR * ((1 + 0.5*GRO) * (V *(1 - V_p*V_in)-CVT*(1-0.5*CV_ef))-CF-CD-GF-0.5*(responseData.NW_GF-responseData.AH_CF)) / (CVT*(1+0.5*GRO)*(1-0.5*CV_ef));
-  responseData.M2_6_Q = VAR*((1+0.5*GRO)*(V*(1-V_p*V_in)-CVT*(1-0.5*CV_ef))-CF-CD-GF-0.5*(responseData.NW_GF-responseData.AH_CF)) / ((1+0.5*GRO)*(V*(1-V_p*V_in)-CVT*(1-0.5*CV_ef)));
-  responseData.M2_6_CF = -VAR*((1+0.5*GRO)*(V*(1-V_p*V_in)-CVT*(1-0.5*CV_ef))-CF-CD-GF-0.5*(responseData.NW_GF-responseData.AH_CF)) / (CF-0.5*responseData.AH_CF);
-  
+  responseData.M2_6_P = VAR * ((1 + 0.5*GRO) * (V * (1 - V_p * V_in) - CVT * (1 - 0.5*CV_ef)) - CF - CD - GF - 0.5*(responseData.NW_GF - responseData.AH_CD)) / (V * (1 - V_p*V_in) * (1 +0.5*GRO));
+  responseData.M2_6_CV = -VAR * ((1 + 0.5*GRO) * (V *(1 - V_p*V_in)-CVT*(1-0.5*CV_ef))-CF-CD-GF-0.5*(responseData.NW_GF-responseData.AH_CD)) / (CVT*(1+0.5*GRO)*(1-0.5*CV_ef));
+  responseData.M2_6_Q = VAR*((1+0.5*GRO)*(V*(1-V_p*V_in)-CVT*(1-0.5*CV_ef))-CF-CD-GF-0.5*(responseData.NW_GF-responseData.AH_CD)) / ((1+0.5*GRO)*(V*(1-V_p*V_in)-CVT*(1-0.5*CV_ef)));
+  responseData.M2_6_CF = -VAR*((1+0.5*GRO)*(V*(1-V_p*V_in)-CVT*(1-0.5*CV_ef))-CF-CD-GF-0.5*(responseData.NW_GF-responseData.AH_CD)) / (CF-0.5*responseData.AH_CD);
+
 
   ctx.body = JSON.stringify(responseData);
 
